@@ -9,6 +9,8 @@ trainset: DUTS+COCO-SEG
 testset: CoCA, CoSOD3k, Cosal2015
 
 Datasets can be downloaded from :  https://pan.baidu.com/s/1g20PyEo9-xedvOwDEF0XmQ   code: 2025 
+# Pre-trained weight
+Pre-trained weight can be downloaded from : https://pan.baidu.com/s/1_ZmaFOyBQRwmiutM7E5cKA code: 2025
 # Trained model
 trained model can be downloaded from : https://pan.baidu.com/s/1kpd91sdvU65qUSutJkRlkA code: 2025
 
