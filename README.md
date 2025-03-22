@@ -20,6 +20,6 @@ The evaluation tool please follow: https://github.com/zzhanghub/eval-co-sod
 # Usage
 Download pretrainde backbone model :
 # Prediction results
-The co-saliency maps of Co-AMamba can be found at :
+The co-saliency maps of Co-AMamba can be found at : https://pan.baidu.com/s/1Vx_xgQK5aPgfqiuyPZAd_w code: 2025
 # Contact
 Feel free to send e-mails to me (h17630706529@163.com).
