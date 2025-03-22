@@ -1,7 +1,5 @@
 # Co-AMamba
 The official repo of the paper Co-AMamba: Co-salient Object Detection with Attention and State Space Model.
-# Overview
-![Uploading image.png…]()
 
 # Environment Requirement
 create enviroment and intall as following: pip install -r requirements.txt
