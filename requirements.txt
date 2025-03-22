@@ -1,0 +1,7 @@
+opencv-python
+pytorch_toolbelt
+fvcore
+timm
+einops
+
+Mamba_requirement(pytorch-2.0.0_cuda-11.8.0_python-3.8)
