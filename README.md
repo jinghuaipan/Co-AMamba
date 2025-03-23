@@ -9,8 +9,7 @@ trainset: DUTS+COCO-SEG
 testset: CoCA, CoSOD3k, Cosal2015
 
 Datasets can be downloaded from :  https://pan.baidu.com/s/1g20PyEo9-xedvOwDEF0XmQ   code: 2025 
-# Pre-trained weight
-Pre-trained weight can be downloaded from : https://pan.baidu.com/s/1_ZmaFOyBQRwmiutM7E5cKA code: 2025
+
 # Trained model
 trained model can be downloaded from : https://pan.baidu.com/s/1kpd91sdvU65qUSutJkRlkA code: 2025
 
@@ -18,7 +17,7 @@ Run test.py for inference.
 
 The evaluation tool please follow: https://github.com/zzhanghub/eval-co-sod
 # Usage
-Download pretrainde backbone model :
+Download pretrainde backbone model : https://pan.baidu.com/s/1_ZmaFOyBQRwmiutM7E5cKA code: 2025
 # Prediction results
 The co-saliency maps of Co-AMamba can be found at : https://pan.baidu.com/s/1Vx_xgQK5aPgfqiuyPZAd_w code: 2025
 # Contact
