@@ -4,7 +4,7 @@ import torch
 from torch import nn
 
 from dataset import get_loader
-from GCoNet import GCoNet
+from Network import Network
 from util import save_tensor_img
 from config import Config
 
