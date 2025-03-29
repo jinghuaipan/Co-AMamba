@@ -14,13 +14,13 @@ def main(args):
     config = Config()
 
     device = torch.device("cuda")
-    model = GCoNet()
+    model = Network()
     model = model.to(device)
     print('Testing with model {}'.format(args.ckpt))
-    gconet_dict = torch.load(args.ckpt)
+    net_dict = torch.load(args.ckpt)
 
     model.to(device)
-    model.load_state_dict(gconet_dict)
+    model.load_state_dict(net_dict)
 
     model.eval()
 
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     # Parameter from command line
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--model',
-                        default='GCoNet',
+                        default='Network',
                         type=str,
                         help="Options: '', ''")
     parser.add_argument('--testsets',
