@@ -87,7 +87,8 @@ class Config():
             self.lambdas_sal_others[loss_sal] *= loss_sal_ratio_by_last_layers
         self.lambda_cls_mask = 2.5 * self.loss_cls_mask_ratio_by_last_layers
         self.lambda_cls = 3.
-        self.lambda_contrast = 250.
+        self.intra_contrast = 1
+        self.inter_contrast = 250
 
         # others
         self.self_supervision = False
