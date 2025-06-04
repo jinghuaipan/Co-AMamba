@@ -257,7 +257,7 @@ def train(epoch):
         ##loss_sal, loss_triplet = sal_loss(scaled_preds, gts, norm_features=norm_features, labels=cls_gts)
         ##else:
         loss_scl = sclloss(return_values[1], return_values[2], return_values[3])
-        loss_sal = sal_loss(scaled_preds, gts) + 0.0001 * loss_scl
+        loss_sal = sal_loss(scaled_preds, gts) + loss_scl * config.intra_contrast
 
         if config.label_smoothing:
             loss_sal = 0.5 * (loss_sal + sal_loss(scaled_preds, generate_smoothed_gt(gts)))
@@ -278,7 +278,7 @@ def train(epoch):
         loss_sal = loss_sal * 1
         loss += loss_sal
         if 'contrast' in config.loss:
-           loss_contrast = FL(pred_contrast, gts_cat) * config.lambda_contrast#([128, 1, 256, 256]) ([64, 1, 256, 256])
+           loss_contrast = FL(pred_contrast, gts_cat) * config.inter_contrast#([128, 1, 256, 256]) ([64, 1, 256, 256])
            loss += loss_contrast
         if config.forward_per_dataset:
             loss_log.update(loss, inputs.size(0))
