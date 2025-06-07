@@ -27,7 +27,7 @@ parser.add_argument('--model',
                     type=str,
                     help="Options: '', ''")
 parser.add_argument('--resume',
-                    default='./best_ep277_Smeasure0.905.pth',
+                    default=None,
                     type=str,
                     help='path to latest checkpoint')
 parser.add_argument('--epochs', default=300, type=int)
