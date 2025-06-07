@@ -1,11 +1,6 @@
-# evaluate max F-measure, S-measure and MAE
-
 import os
 from evaluator.evaluator import evaluate_dataset
 from evaluator.utils import write_doc
-#from libs.log import create_logger
-# import config
-
 
 def evaluate(roots, doc_path, num_thread, pin):
     datasets = roots.keys()
@@ -42,10 +37,6 @@ if __name__ == "__main__":
     eval_doc_path = './eva.txt'
     eval_num_thread = 8
 
-    #logger.info('eval_doc_path:{}\neval_num_thread:{}'.format(eval_doc_path, eval_num_thread))
-    #logger.info('model name:{}'.format(config.model_name))
-
-    # An example to build "eval_roots".
     eval_roots = dict()
     datasets = ['CoCA']#CoCA, 'CoSal2015','CoSOD3k'
     for dataset in datasets:
@@ -53,18 +44,12 @@ if __name__ == "__main__":
         #logger.info(dataset)
         roots = {'gt': '../datasets/sod/gts/' + dataset,
                 'pred': '../pred/' + dataset}
-        #roots = {'gt': './datasets/sod/gts/CoSal2015/'.format(dataset),
-                 #'pred': './pred/CoSal2015'.format(dataset)}
         eval_roots[dataset] = roots
         os.environ['CUDA_VISIBLE_DEVICES'] = eval_device
         content = evaluate(roots=eval_roots,
                 doc_path=eval_doc_path,
                 num_thread=eval_num_thread,
                 pin=False)
-
-        #logger.info('pred:{}'.format(roots['pred']))
-
-        #logger.info(content)
         print(content)
 
 
