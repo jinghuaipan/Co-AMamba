@@ -242,7 +242,7 @@ def train(epoch):
         loss_sal = loss_sal * 1
         loss += loss_sal
         if 'contrast' in config.loss:
-           loss_contrast = FL(pred_contrast, gts_cat) * config.inter_contrast#([128, 1, 256, 256]) ([64, 1, 256, 256])
+           loss_contrast = FL(pred_contrast, gts_cat) * config.inter_contrast
            loss += loss_contrast
         if config.forward_per_dataset:
             loss_log.update(loss, inputs.size(0))
