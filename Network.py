@@ -21,31 +21,7 @@ class Network(nn.Module):
         super(Network, self).__init__()
         self.config = Config()
         bb = self.config.bb
-        if bb == 'cnn-vgg16':
-            bb_net = list(vgg16(pretrained=True).children())[0]
-            bb_convs = OrderedDict({
-                'conv1': bb_net[:4],
-                'conv2': bb_net[4:9],
-                'conv3': bb_net[9:16],
-                'conv4': bb_net[16:23]
-            })
-        elif bb == 'cnn-vgg16bn':
-            bb_net = list(vgg16_bn(pretrained=True).children())[0]
-            bb_convs = OrderedDict({
-                'conv1': bb_net[:6],
-                'conv2': bb_net[6:13],
-                'conv3': bb_net[13:23],
-                'conv4': bb_net[23:33]
-            })
-        elif bb == 'cnn-resnet50':
-            bb_net = list(resnet50(pretrained=True).children())
-            bb_convs = OrderedDict({
-                'conv1': nn.Sequential(*bb_net[0:3]),
-                'conv2': bb_net[4],
-                'conv3': bb_net[5],
-                'conv4': bb_net[6]
-            })
-        elif bb == 'trans-pvt':
+        if bb == 'trans-pvt':
             self.bb = pvt_v2_b2()
             if self.config.pvt_weights:
                 if os.path.exists(self.config.pvt_weights):
@@ -59,12 +35,8 @@ class Network(nn.Module):
                     print("\tIf you are testing/eval, it's okay.")
                     print("\tIf you are training, save it at {}.".format(self.config.pvt_weights))
 
-        if 'cnn-' in bb:
-            self.bb = nn.Sequential(bb_convs)
+        
         lateral_channels_in = {
-            'cnn-vgg16': [512, 256, 128, 64],
-            'cnn-vgg16bn': [512, 256, 128, 64],
-            'cnn-resnet50': [1024, 512, 256, 64],
             'trans-pvt': [512, 320, 128, 64],
         }
  
@@ -90,16 +62,9 @@ class Network(nn.Module):
         self.group = CoAttLayer()
         self.sam2 = SAM(64)
         self.sam1 = SAM(32)
-        # self.glm = GLM(320,320)
-        # self.group_intra = CoAttLayer()
         self.conv128_512 = nn.Conv2d(128, 512, kernel_size=3, stride=1, padding=1)
         self.conv512_64 = nn.Conv2d(512, 64, kernel_size=3, stride=1, padding=1)
         self.conv64_512 = nn.Conv2d(64, 512, kernel_size=3, stride=1, padding=1)
-        # self.attention = AttentionModule(512)
-        # self.mamba = Mamba(512,bimamba_type="v3")
-        # self.mambalocal = MambaLocal(256)
-        # self.local = LG(512,4,4,782)
-        # self.crossmamba = CrossMamba(512)
         self.small_decoder = nn.Sequential(nn.Conv2d(512, 128, 3, stride=1, padding=1),
                                            nn.BatchNorm2d(128),
                                            nn.ReLU(inplace=True),
